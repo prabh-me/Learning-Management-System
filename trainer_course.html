@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Student's Site | Sitemap</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/tabs.css">
+<link rel="stylesheet" type="text/css" href="css/register.css">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="js/register.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!--[if lt IE 7]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+<![endif]-->
+<!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+<body id="page6" onLoad="document.getElementById('tab1').style.display='none';
+document.getElementById('tab2').style.display='none';">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+    <div class="container">
+      <h1><a href="#">Student's site</a></h1>
+        <form action="#" id="search-form">
+        <fieldset>
+          <div class="rowElem">
+            <input type="text">
+            <a href="#">Search</a></div><br><br>
+            <button style="float:right" type="button" onClick="logout()" >Logout</button> <br><br><br>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+  <div class="container">
+    
+    <section id="content">
+      
+      <div class="inside">
+        <h2>WELCOME</h2><br>
+        
+       <button id="b_add" type="button" onClick="fun()">Add a course</button> 
+       <!--button id="b_del" type="button" onClick="fun()" >Delete a course</button--> 
+       
+       <script>
+	   
+	   
+	   
+	   function logout()
+{
+window.location.assign("http://localhost/ss/index.html");
+}
+	   
+	   function fun()
+{
+
+       var ele = document.getElementById("add");
+var eleDiv = document.getElementById("del");
+
+    // based on condition you can change visibility
+if(ele.style.display == "none") {
+        ele.style.display = "block";
+		eleDiv.style.display = "none";
+}
+else {
+    ele.style.display = "none";
+	eleDiv.style.display = "block";
+}
+
+}
+       </script>
+      
+       <div id="add" style="display:none">
+       <br><br>
+            <h2>Add your course...</h2><br>
+       <form action="http://localhost/ss/add.php" method="post">
+              <p> <label for="author">Author Name</label>  <input name="author" type="text" />
+              <p> <label for="name">Course Name</label>  <input name="name" type="text" /> 
+              <p> <label for="desc">Course Description</label> <textarea name="desc" rows="4" cols="50">
+              </textarea> </p>
+            <br><br> <input type="submit" name="submit" value="Add">
+	        </form>
+               </div>
+        
+        
+       <div id="del" style="display:none">
+            Delete...
+        </div>
+    </div>
+
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="footerlink">
+    
+    <div style="clear:both;"></div>
+  </div>
+</footer>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>

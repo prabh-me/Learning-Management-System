@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Student's Site | Sitemap</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/tabs.css">
+<link rel="stylesheet" type="text/css" href="css/register.css">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="js/register.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!--[if lt IE 7]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+<![endif]-->
+<!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+<body id="page6" onLoad="document.getElementById('tab1').style.display='none';
+document.getElementById('tab2').style.display='none';">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+    <div class="container">
+      <h1><a href="#">Student's site</a></h1>
+      <nav>
+        <ul>
+          <li><a href="site.html" class="m1">Courses</a></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li class="last current"></li>
+        </ul>
+      </nav>
+      <form action="#" id="search-form">
+        <fieldset>
+          <div class="rowElem">
+            <input type="text">
+            <a href="#">Search</a></div>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+  <div class="container">
+    
+    <section id="content">
+      
+      <div class="inside">
+        <h2>Homogeneous co-ordinates:</h2><br>
+		<p>
+		Welcome to the second transformations lecture. In this lecture, we'll cover a whole lot more about transformations, and all of the material you need to get started on homework 1. This segment deals with homogeneous coordinates. Homogeneous coordinates are one of the most interesting topics in computer graphics, and really fundamental to the way we think about transformations.
+
+All of you have presumably finished homework 0 and have your compilation framework and environment set up. After the current lecture, you should start doing homework 1 because it has all of the information you need.
+
+The last lecture talked about 3D rotations, we will summarize those results here. For the homework itself you probably only need the final formula although it is good to understand the derivation. This lecture will close with the derivation of gluLookAt, which is in the last segment of the lecture, and that helps in clarifying many of the ideas you will need for homework 1.
+
+We start by talking about translation and homogeneous coordinates.
+
+</p><br><p>So far we have dealt with rotations, scales, but we haven't dealt with the simple operation of how do you move an object from one place to another. Let me go back to the applet, and what I'll do is to make the house little bit bigger I'll include some scale so we will just scale it a little bit, this is really not part of the lecture but just to make the house somewhat bigger.
+
+I'm now going to show translation. I earlier showed rotations. So translations are very simple. In this case, I can translate by 50 in the T column and that's equivalent to 5 units.
+
+And that's all the translation consists of. So earlier my house was positioned at the center, now it's positioned to one side.
+
+How can I express this transformation using transformation matrices? For that, we come back here and I've written down the equations. So we have x', y', z'. There is some matrix we want to apply to x, y, and z. And what we want to have is that the x coordinate, I mean, the X position goes from x to x + 5, the Y position stays at y, and the Z position stays at z. So what is the matrix for this? Let's start exploring that.
+
+</p><br><p>Let's just think about the first row, since it's only x that's being affected. So you know that x' is equal to x + 5. So one thinks that the first coordinate that multiplies x must be equal to 1.
+
+Then there is no effect on y, so we can just make this 0. There is no effect on z, so we can just make this 0, But, if were to do that, then I would say that, x' is just equal to x. So, I get this term, but how do I get this term here? How do I get the plus 5? So there have been many answers when I asked this question in class. And one of the ideas, which is not correct, (So I will start out by making it wrong), is to say that this quantity, for example is equal to 5 / z. And get that to multiply.
+
+But this is not correct because one of the key properties of transformations is that the transformation matrix itself remains constant. So it can't be a function of which location and what the coordinate z is. The transformation matrix cannot include the coordinates x, y and z.
+
+</p><br><p>So this is a challenging problem and in computer graphics, it was solved by method known as homogeneous coordinates which enable a lot of things to happen that would otherwise be very difficult.
+
+The idea is simple in retrospect. You add a fourth homogeneous coordinate which we will use w to represent this fourth homogeneous coordinate. For now assume that w is equal to 1.
+
+So this coordinate, we will call w, which is equal to 1. The w coordinate is what is used for translation. So, you look at the value 5 here, it multiplies the w coordinate, which is currently 1, and 5 times 1 gives you the +5 value here.
+
+Notice that the y and z, they don't have any multiplication of the w coordinate because there is no translation in y and z.
+
+</p><br><p>And for now, this fourth row, we will just assume as [0 0 0 1]. So the w' coordinate will also be equal to 1. Later when we consider viewing, we will play with this fourth row in order to include viewing transformations. That's really all that homogeneous coordinates are. You add a fourth w coordinate, and in this way, you can enable translation. But actually homogeneous coordinates allow you to do many more interesting things.
+
+First question is, where does the term homogeneous come from?
+
+And essentially, it's because the unhomogenized coordinates of the point is given by dividing by w. So you take this w value here, you divide x by w, y by w, z by w, and of course, w divided by w is 1.
+
+One important corollary of this is that any constant scale factor to a homogeneous 4-vector gives the same result.
+</p><br><p>
+So essentially, it consists of all possible scales of the inhomogeneous coordinates of the point. In the previous slide, we assumed that w is equal to 1.
+In reality, w can be any number. For now, we assume it's a positive number. So w is greater than 0. And, in this way we can represent a wide variety of transformations. It's only at the end when we want to know where does this point actually lie in real physical world space that we have to divide by the homogeneous coordinate.
+
+If you multiply the 4-vector by some w value greater than 0 there's no effect. If you want to do a standard scale, you have to increase the x, y and z quantities without changing the w value.
+
+For w greater than 0, this is a real physical point because you can divide by it and you can get a real point. For w equal to 0, this is the point at infinity. And in fact in many formulae which would otherwise involve the division by 0, homogeneous coordinates allow simpler formulae because you can represent the point at infinity in the same framework.
+
+Moreover, in practical applications we often say w is equal to 0 to represent vectors. If you remember, vectors are characterized by a direction only.
+
+</p><br><p>And so you set W = 0 so that the translational of components of the matrix do not apply to the vector. So what are the advantages of homogeneous coordinates? First it's a unified framework for all of the transformations we are considering, whether it's translation, viewing, rotation, even perspective projection in the next lecture.
+
+And that means that the entire graphics pipeline can run on the basis of homogeneous 4x4 matrices and their corresponding 4-vectors. Only at the final step where you have to represent a point of the actual screen, do you need to dehomogenize. And in fact, you can concatenate all of the different transformations, I move my object, I rotate it, I scale it, I translate it, I view it, all of that becomes a single 4x4 matrix.
+
+Division is a historically difficult operation in a computer; it can take several cycles relative to addition or multiplication. And division is actually essential. So if you consider perspective projection, you may have seen that objects far away appear closer. So you have to divide by the depth. The advantage of homogeneous coordinates is, there is only one final division for the dehomogenization, at the end of the pipeline. The are no intermediate division steps.
+
+In many mathematical formulae, the results are simpler. We won't go into it in detail here. But, for example consider intersecting two parallel lines. You have to normally consider the special case when the lines are parallel, your formulae blow up, but not in homogeneous coordinates, because the point at infinity, is a first class primitive in homogeneous coordinates: w = 0.
+
+For all of these reasons, 4x4 matrices and homogeneous coordinates are standard in computer graphics software and hardware.
+
+Let's look at the form for the general translation matrix. You will notice that the general translation matrix is just the identity in the upper left 3 by 3 portion. So this part is the identity and I can write it as the identity which is 3x3. And in fact that's what I have denoted here. And that's because there is no rotation applied so when the identity acts on x it'll be x, y and z. So it will give you this vector, x, y and Z.
+</p><br><p>
+And that's exactly what we want. It's in the upper, right portion that we have the translation vector. So T_x, T_y, and T_z. And that's this portion. T.
+
+And of course there is no action on the homogeneous coordinate which remains 1. And therefore, this is in fact the point plus a translation. When considering rotations and translations, it's convenient to write this 4x4 matrix in this form, which is not quite a 2x2 matrix but in many ways behaves like that. And, let me just write this down again. So what you have is the identity. The identity is a 3x3 matrix.
+
+Then you have a translation and remember that the translation has 3 rows and 1 column. So the translation is 3 rows, 1 column.
+
+You have 0 in the bottom row, and that you can write as 1 row and 3 columns. And then, you just have 1 here.
+</p><br><p>
+So this is a convenient form. This is the form here, if you can't understand my handwriting, I also have it on the slide. The identity, translations, 0 and 1 ( [I_3 T, 0 1] ). But you should remember that this portion is a 3 by 3 matrix, this is a vector, this is a vector, this is a quantity.
+
+Nevertheless, thinking about it in terms of this compact form enables many formulae to go forward and we will use it when combining rotations and translation. Combining translations and rotations is intellectually interesting but also a very important practical problem because it's the most common thing we do. Typically we take an object, we scale it to the right dimensions. We rotate it into the right orientation, and then we translate or move it into the world at the appropriate location.
+
+You could also do these transformations in the reverse order. You could first move an object into the appropriate position and then rotate it. But remember that for now at least, rotations are always about the origin.
+
+And therefore it's a bit tricky as to what happens if you do the translation first. We will talk about both formally.
+
+In fact, these are general operations to do rigid body transformations. If you have a rigid body you can't scale it, but you can rigidly translate and rotate it and that is why they've received a lot of attention, in literature of many different fields. For now I have a translation here, that I am going to set back. And I am going to include the rotation. So, let's say, I rotate my house by, let's say, 90 degrees.
+
+Okay? Now, this is not probably a house you want to live in, it's on its side, but it illustrates our concepts. If I now put in my translation by 5 units, you can see that the house moves to the right as you would expect.
+</p><br><p>
+Now think about it for yourselves. What would happen if I swapped the rotation and translation? Would the house remain in the same position, or would it change?
+
+And we can do that example easily here. Remember where the house was originally. Now I swapped, and look: it's still in the same orientation, it's lying on its side, but it's no longer in the same location. If I do first rotation and then translation, it's plus five units in the X direction. If I do first translation and then rotation, it's plus five units in the Y direction.
+
+So clearly translation and rotation are not commutative operations. Not surprising, because these are matrix multiplications. Matrices are not commutative.
+
+And they have different characteristic behaviors. First let's consider the case that may be perhaps more intuitive, where you first do the rotation and thereafter you do the translation.
+
+If you look at this equation, I have first done the rotation then the translation.
+</p><br><p>
+And this TR is a combined matrix set. Now if I do the rotation, I have some rotation times the point P. Note that in this case it's not in homogeneous coordinates. It's just a standard 3-vector.
+
+And then I add the translation. That may seem more intuitive, I translated what I told you to translate, I rotated what I told you to rotate. So what does this become in terms of our homogeneous coordinates? We can use the simplified and compact form to get at it relatively easily. And, rotation does not involve the homogeneous coordinate, so I can just write this just as the rotation matrix. Remember that this is a 3x3 matrix.
+
+It has 0 here, 0 here, 1 here.
+
+Translation can, as we've just seen, be written as the identity, which is again the 3-identity, translation, [0 1] ( [I_3 T, 0 1] ). So what happens if we multiply these together? So identity times the rotation is just the rotation itself, plus translation times 0 leaves us with the rotation. So we'll get the rotation here.
+</p><br><p>
+Now come here, identity times 0 is 0 plus translation times 1 will give us the translation here.
+
+And now 0 times rotation plus 1 times 0, this is 0, and 0 times 0, 1 times 1 is 1. Remember, that these are still matrices and vectors, so rotation is 3x3. Translation is 3x1. 
+
+And in fact, if we consider a point where again we can consider the point as being a 3-vector for the point and then the homogeneous coordinate and so this is again a 3-vector. Then rotation times point will be a rotation times point, plus T. So this will be equal to rotation times the point, plus T.
+
+And finally 0 times point, 1 times 1. So you will maintain the homogeneous coordinate.
+
+And, to write it out explicitly, you get a form like this, where you have this matrix, and this is the translation times the rotation. I've just written it out explicitly. Remember that the rotation component does not change. And then you have the translation, zero and one. So, it's rotation, translation, zero and one. And this is the homogeneous coordinates for doing the rotation first, and then the translation.
+
+That is for this case. So you rotate by 90 degrees, and in this case this is rotated and then you translate it.
+</p><br><p>
+We can also consider it the other way. And in this case, I've swapped the rotation and translation. So, let's go back to our demo and let me swap rotation and translation. And now you can really think of it as being the same rotation. But now instead of translating about the X axis, I've actually translated about the Y axis. So, how does that come to be? And let's look at the equations that you get. So, in this case, I first apply my translation to P.
+
+And then I apply the rotations. So if I translated P, I would get P plus T. Again remember that, in here we are not talking about homogeneous coordinates, we are just doing standard vectors P plus T. I apply my rotation to this. So I will get RP and then I will get RT.
+
+Okay, so RT is the rotation applied to the translational component. An in fact, I can replace this by T', which is the effective translation that's along the Y axis. And now it makes sense because I'm rotating the X translation by the same rotation which is 90 degrees. 
+
+So if I rotate the X translation by 90 degrees, I do in fact get a translation about Y. So, I am taking my X translation, rotating it by 90 degrees, and that's why I translate along Y. So the effective translation here is along the Y direction. 
+
+For those reasons, it's a little bit counterintuitive and typically when you position objects, you do the rotation before you do the translation. But of course there is no fundamental limitation on that and there are some cases where you want to translate first. Even in the derivation of gluLookAt, that will come up.
+
+And so you then end of getting this effective translation.
+
+Apart from that the matrix should be the same but we can multiply it out explicitly. So, I can write down the rotation matrix as we saw earlier as [R 0, 0 1]. And I can write down the translation matrix as [I_3 T, 0 1].
+
+So now if I multiply these together, you get rotation times the identity plus 0 times 0. And that will be equal to the rotation. Rotation times translation plus 0 times 1, and that will be my component rotation times translation, which is equal to this T prime here, okay? 0 times the identity plus 1 times 0 is 0. 0 times translation plus 1 times 1 is 1 and this is the final matrix that you will get.
+
+Here, I've written it down explicitly so you'll have the rotation times the translation, and what you'll end up with is the rotation 0 and 1 and this is the 3x3 matrix of the rotation multiplies the 3-vector of the translation and you'll end up with this effective translation.
+</p>
+
+        </div>
+    </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="footerlink">
+    
+    <div style="clear:both;"></div>
+  </div>
+</footer>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>

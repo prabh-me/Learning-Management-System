@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Student's Site | Sitemap</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/tabs.css">
+<link rel="stylesheet" type="text/css" href="css/register.css">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="js/register.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!--[if lt IE 7]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+<![endif]-->
+<!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+<body id="page6" onLoad="document.getElementById('tab1').style.display='none';
+document.getElementById('tab2').style.display='none';">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+    <div class="container">
+      <h1><a href="#">Student's site</a></h1>
+      <nav>
+        <ul>
+          <li><a href="site.html" class="m1">Courses</a></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li class="last current"></li>
+        </ul>
+      </nav>
+      <form action="#" id="search-form">
+        <fieldset>
+          <div class="rowElem">
+            <input type="text">
+            <a href="#">Search</a></div>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+  <div class="container">
+    
+    <section id="content">
+      
+      <div class="inside">
+        <h2>Composing transforms</h2><br>
+	<p>	In this segment, we are going to study about composing transformations. Often we want to combine transforms. For example, you may take your object, you may scale it by 2 units in the X direction and then rotate it by 45 degrees to align it properly. For example, in the applet we saw, this is exactly what we've done. We have first applied scales and then rotated the object into place.
+
+The advantage of a matrix formulation is that you can apply the matrices for each of the individual operations and concatenating matrices is just matrix multiplication so the net transform is still a matrix. However it is important to know that it is not commutative and we'll get to that in a moment because matrix multiplication is not commutative. So one obvious thing we can do is to compose rotations and scales because those are the transformations we have seen so far.
+
+And so what I'm going to say is that you start with a basic location, x_1. You apply some kind of scale to it, which is a scale matrix S. You get x_2. Thereafter, you apply a rotation. So you take x_2, you apply the rotation matrix R, and you get x_3.
+
+</p><br><p>What is x_3 equal to? It's just equal to the rotation applied to x_2 which is Sx_1. Since matrix muliplication is associative, this is equal to the rotation times the scale times x_1. So you have a net matrix which is rotation times scale.
+
+Question is, can we swap the order and matrix multiplication is not commutative. So if you do the rotations and scales in the opposite order, things will change. Let me show you an example of that using our applet. We thank again Brown University for creating such a nice applet to making it available on their website.
+
+</p><br><p>What I'm going to do to make this simpler is put back one of the scale and one of the rotation transformations. So let me put this back.
+
+You have a scale of 3.5 units in the X direction, you have a rotation of 40 degrees. And this is how the house looks like. If I now swap the order you can see that it looks very different and in fact it looks as if the house has been sheared. In fact, applying a rotation first followed by a scale is similar to applying a shear. Look it the other way, and now swap the order. And so you can see that these operations are not commutative.
+
+Finally one thing that we may want to do is to invert a composite transformation. So lets say I have 2 or 3 transformations: scales, rotations, may even be translation. How do I invert it to get back to the correct position?
+
+So there are two ways in which you can do this. First you can find the composite matrix given by multiplying together each of the individual transformation matrices and then you can use a general matrix inversion procedure to invert that matrix. However an idea that gives greater insight is that you can invert each of the transforms individually.
+
+But there is this tricky thing, that just as in matrix multiplication, inverting the product of matrices is taking their individual inverses and swapping the order. Similarly for transformations, you have to invert each transform and then swap the order. This is obvious from the properties of matrices and it's also obvious if you think about the way transformations are done. The last transformation done has to be the first one undone.
+
+So here M is equal to M1, M2, M3 where M3 was the first transformation applied to the object, then M2, then M1. The inverse is going to be M3 inverse M2 inverse times M1 inverse and we can see how that works out.
+
+</p><br><p>I'm going to write M inverse times the original matrix M.
+
+So the original matrix is given by M1, M2 and M3.
+
+Okay but now, if you look at M1 inverse M1 which is what I have done here, that's equal to the identity, then you look at M2 inverse M2 that's equal to the identity and finally M3 inverse M3 which is the identity. In terms of transformations you can consider that you have undone the last transformation that was applied, M1, then you undo the next transformation and finally you undo the last transformation.
+
+</p>
+        </div>
+    </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="footerlink">
+    
+    <div style="clear:both;"></div>
+  </div>
+</footer>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>

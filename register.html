@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Learning Management System</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/tabs.css">
+<link rel="stylesheet" type="text/css" href="css/register1.css">
+<link rel="stylesheet" type="text/css" href="css/register2.css">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="js/register.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!--[if lt IE 7]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+<![endif]-->
+<!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+<body id="page6" onLoad="document.getElementById('tab1').style.display='none';
+document.getElementById('tab2').style.display='none';">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+    <div class="container">
+      <h1><a href="#">Student's site</a></h1>
+      <nav>
+        <ul>
+          <li>Learning Management System</li>
+        </ul>
+      </nav>
+      <form action="#" id="search-form">
+        <fieldset>
+          <div class="rowElem">
+            <input type="text">
+            <a href="#">Search</a></div>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+  <div class="container">
+    
+    <section id="content">
+      
+      <div class="inside">
+        <h2>Registration</h2>
+        <p>
+        <ul id="tabs">
+    <li><a href="#" name="tab1" onClick="document.getElementById('tab1').style.display='';
+document.getElementById('tab2').style.display='none';">Trainer</a></li>
+    <li><a href="#" name="tab2" onClick="document.getElementById('tab2').style.display='';
+document.getElementById('tab1').style.display='none';">Learner</a></li>
+    </ul>
+    <div id="content"> 
+    <div id="tab1">
+
+    <div id="wrap">
+	        <div id="wrap2"> 
+	         <form action="http://localhost/ss/trainer.php" method="post" id="register_form1">
+              <p class="validate_msg">Please fix the errors below!</p>
+              <p> <label for="fname">First Name</label>  <input name="fname" type="text" /> <span class="val_fname"></span> </p>
+              <p> <label for="lname">Last Name</label>  <input name="lname" type="text" />  <span class="val_lname"></span> </p>
+              <p> <label for="email">Your Email</label>  <input name="email" type="text" /> <span class="val_email"></span> </p>
+              <p> <label for="password">Password</label>  <input name="password" type="password" /> <span class="val_pass"></span> </p>
+              <p> <label for="repassword">Retype Password</label>  <input name="repassword" type="password" /><span class="val_pass2"></span></p>
+              <p> <label for="phone">Contact No.</label>  <input name="phone" type="text" /> <span class="val_phone"></span> </p>
+              <p> <label for="gender">Gender</label> <span class="val_gen"></span> <br> 
+                <input name="gender" type="radio" value="m" /> Male <br>
+                <input name="gender" type="radio" value="f" /> Female</p>
+              <p> <label for="spl">Select your speciality</label><br> 
+                <select name="spl" id="spl">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="IT">IT</option>
+                <option value="ICE">ICE</option>
+                <option value="EEE">EEE</option>
+                </select></p>
+             <input type="hidden" name="type" value="trainer" />
+            <br><br> <input type="submit" name="submit" value="Register" />
+	        </form> </div> </div>
+        </div>
+       
+    <div id="tab2">
+        <div id="wrap">
+	        <div id="wrap2"> 
+	          <form action="http://localhost/ss/learner.php" method="post" id="register_form2">
+	          <p class="validate_msg">Please fix the errors below!</p>
+              <p> <label for="fname">First Name</label>  <input name="fname" type="text" /> <span class="val_fname"></span> </p>
+              <p> <label for="lname">Last Name</label>  <input name="lname" type="text" />  <span class="val_lname"></span> </p>
+              <p> <label for="email">Your Email</label>  <input name="email" type="text" /> <span class="val_email"></span> </p>
+              <p> <label for="password">Password</label>  <input name="password" type="password" /> <span class="val_pass"></span> </p>
+              <p> <label for="repassword">Retype Password</label>  <input  name="repassword" type="password" /> <span class="val_pass2"></span> </p>
+              <p> <label for="phone">Contact No.</label>  <input name="phone" type="text" /> <span class="val_phone"></span> </p>
+              <p> <label for="gender">Gender</label> <span class="val_gen"></span> <br>
+                <input name="gender" type="radio" value="m" /> Male <br>
+                <input name="gender" type="radio" value="f" /> Female</p>
+              <p> <label for="opt">Select your course</label><br> 
+                <select name="opt">
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="IT">IT</option>
+                <option value="ICE">ICE</option>
+                <option value="EEE">EEE</option>
+                </select> </p>            
+             <input type="hidden" name="type" value="learner" />
+            <br><br> <input type="submit" name="submit" value="Register" />
+	        </form> </div> </div>
+        
+        </div>
+    </div>
+        </p>
+    </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="footerlink">
+    
+    <div style="clear:both;"></div>
+  </div>
+</footer>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Student's Site | Sitemap</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/tabs.css">
+<link rel="stylesheet" type="text/css" href="css/register.css">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.min.js" ></script>
+<script type="text/javascript" src="js/register.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_300.font.js"></script>
+<script type="text/javascript" src="js/Myriad_Pro_400.font.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<!--[if lt IE 7]>
+<link rel="stylesheet" href="css/ie6.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/ie_png.js"></script>
+<script type="text/javascript">ie_png.fix('.png, footer, header nav ul li a, .nav-bg, .list li img');</script>
+<![endif]-->
+<!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
+</head>
+<body id="page6" onLoad="document.getElementById('tab1').style.display='none';
+document.getElementById('tab2').style.display='none';">
+<!-- START PAGE SOURCE -->
+<div class="wrap">
+  <header>
+    <div class="container">
+      <h1><a href="#">Student's site</a></h1>
+      <nav>
+        <ul>
+          <li><a href="site.html" class="m1">Courses</a></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li class="last current"></li>
+        </ul>
+      </nav>
+      <form action="#" id="search-form">
+        <fieldset>
+          <div class="rowElem">
+            <input type="text">
+            <a href="#">Search</a></div>
+        </fieldset>
+      </form>
+    </div>
+  </header>
+  <div class="container">
+    
+    <section id="content">
+      
+      <div class="inside">
+        <h2>Basic 2d transformations</h2><br>
+		</p>Welcome to the lecture. This segment introduces the notion of basic transformations which are one of the fundamental concepts in computer graphics.
+
+To motivate the problem, consider that in computer graphics, you often have many different coordinate systems. So, you may have one coordinate system for the world, you may have one coordinate system for the character in the word, and within that you may have different coordinate systems for the body, for the arms. To relate them, we must transform between them. So it's very often in the case that you have a different geometric model for the arms, you have a different geometric model for the torso, you have different geometric model for the head.
+
+</p><br><p>What you want to do is to transform all of them into a common coordinate frame and place this appropriately in the world. It's also particularly important for modeling objects because very often you have a tea pot that you've created in your favorite modeling system but you now want to place it in the correct location in the world. You need to scale it so it's the appropriate size and you want to be able to view it from different angles. In fact that's exactly the assignment that you'll have in homework 1.
+
+So here I have my teapot and what I can do is I can move, rotate around it and so I can rotate the viewer to see it from many different directions. I can also change the viewer in this way and so rotate around the teapot.
+
+This is a basic assignment that enables you to create a 3D computer graphics image of some object. And in this way you'll see what we need to do technically to get these transformations and viewing to actually work. This unit is about the math for these transformations.
+
+In the lecture, we introduced the notions of vectors and matrices. All of the transformations are represented using matrices. And they act by matrix-vector multiplication. Throughout the lecture, we will be showing examples and demos, both with homework 1, which you just saw, and with an applet.
+
+</p><br><p>I just want to say a few words about this applet. This is the transformations game applet. It comes courtesy of the Brown University Exploratories of Software, and they've really done an amazing job creating a range of applets that can be used for instructional purposes. I have given you a link below and the main people responsible for this are Professor Andy Van Dam and Jean Laleuf. I would very seriously encourage you to go through and look through all of the applets; they're very exciting.
+
+So this is what the applet looks like and it's really set up as a game, we won't be using it as such in the lecture but the idea is that I have this house. And, I want to move this house in such a way that it aligns with the house on top. So, here I pull down some translations, and I can get it to align. When it does that, it's very happy and you score a point.
+
+Of course the examples in later sections are much more challenging. And so here is an example where you have to actually get it to rotate in this way. You might be interested in playing with it, but we're just going to use it as a basic mechanism to teach the various types of transformations and so there's... you can do scale, you can do rotation, you can do translation and I'll show each of these.
+
+Let's give an overview of the general idea of how this lecture will proceed. We will in general have the object in model coordinates. We will transform this object into world coordinates. The points and the object will be represented with vectors and they will be multiplied by matrices which correspond to the different transformations. Demos will be shown using the applet I just showed you.
+
+</p><br><p>This segment deals with 2D transformations: rotations, scales, and shears. The later segments in this lecture will consider other interesting aspects, such as composing transforms, 3D rotations, and then in the next lecture, the segments will handle homogeneous coordinates, which are one of the main breakthroughs in computer graphics, and the ways in which we transform the normals as well for shading.
+
+First, let's talk about the scaling transformation and let me go back to my demo. So here I have the house and I am going to put in scale. I don't know whether you can see this at your resolution but this is an S which controls the amount of scale. So what I can do is I can scale it in the X direction and note now that the house has become long and thin. So scaling can work non-uniformly. It can be different in the X direction from the Y direction.
+
+I can also put in a scale now along the Y direction and now I've just made my house bigger.
+
+And let me make it somewhat bigger. At this point, the house is being scaled by the factor of 3.5 in both the X and the Y directions. The matrix for scaling is a diagonal matrix, with the amount of scale in each coordinate noted.
+
+	</p><br><p>So here we have S_x and here we have S_y which is the scale in the X and Y directions, respectively. So the X coordinates are multiplied by S_x and the Y coordinates are multiplied by S_y. The inverse of the scale is simply taking the X and Y scales and taking their reciprocals or 1 / (the value). So if I scale by a factor of 2 I invert the scale by scaling by a factor of 1/2. So this is the inverse of S_x and the inverse of S_y.
+
+And if you have three dimensional scale which is what we are interested in just, it's just S_x, S_y and S_z and each of the coordinates is multiplied by the corresponding scale factor.
+
+Next we come to shear. Shear is a process by which you may take a rectangular shape and turn it into a parallelogram. I will demonstrate this in a moment.
+
+So what you have here is that I am taking this and I am moving it like this and here, I am sharing it in this way. And that's what a shear is. So, on the top its moved to the right, and the bottom is moved to the left. You can think of this as being held by plates on both sides, and then moving the plates to the right and the left respectively, so I think of this, as being some sort of plates like this, where I move this guy here, and this guy here, and in this way I create a shear.
+
+</p><br><p>How is the amount of the shear calculated? So first there is the question of the extent of the shear. So generally at the central line there is no shear. So there is no shear here. So no shear. 
+
+Okay, so this corresponds to the zero shear and the extent of this shear is equal to a.
+
+And assuming that this is 1 unit here and 1 unit here, okay? So similarly this here would be -a. So what is the shear matrix? The X coordinate depends on the Y coordinate so, if the Y coordinate is +1, then the X coordinate goes to +a, moves ahead by a value of a. If they Y coordinate is -1 here, the X coordinate changes by a value of -a.
+
+And so the way the shear can be written is that the Y coordinate does not change. So y' is going to be equal to y.
+
+And because of that the second row of the matrix is just [0 1].
+
+</p><br><p>However in the first row of the matrix, you have that, the new value of x, which is x', is equal to the old value of x. But, now you have to add this quantity, which is the value of a, times the Y coordinate. So, how much this shear is, will depend on the Y coordinate, that is why this is 1 and a, right? So, x' is equal to x + ay. And that is the fundamental equation of the shear.
+
+The inverse shear is given by applying -a, so you have the same shearing formula but now you're applying -a. We've already talked about scale and shears, the next thing we wish to consider is rotations.
+
+In this segment we are just going to consider 2D. We'll go on to 3D in the subsequent segment. I'll just say a few other words of rotations. Like everything else they're a matrix. So this matrix applied to X+Y, is the same as rotating X and then rotating Y. So if you have a location on the object which is say the center of mass plus some displacement, rotating that is equivalent to rotating the center of mass and then rotating the displacement. So you can add them together.
+
+Rotations are a linear operation, and in 2D they're commutative, in 3D they're not. And let me show you an example of that.
+
+So here we have our transformations game again. I'll leave the scale in so that just it looks a little bit easier to see and now I'm going to put in a rotation.
+
+And I am going to rotate by 40 degrees. So I rotated it and you can see that the object has moved. I can also put in an inverse rotation and so, let's say this is an inverse rotation of -90 degrees.
+
+Its not the exact inverse of the 40 degree rotation, in fact it makes it go the other way. But the point I am making is, notice where the house is now. If swap the order of the rotations, I still get back to the same location. So, swapping the order of the rotations has no effect for 2D rotations. It will matter, however, for 3D rotations. The remaining question is, what is the matrix, for a rotation in 2D? And this is what we will now proceed to derive.
+
+</p><br><p>This is the X axis. This is the Y axis. And we have a point p here that we want to rotate to some point p', where the angle between these is some angle theta. So this will be an angle theta. So how can we represent this rotation?
+
+Well, it's easiest to do it in polar coordinates. So we let p equal to some radius which is some radius r times cosine of alpha, so this angle here is equal to alpha.
+
+Okay. And it's going to be equal to r times sine of alpha. So what is p' now equal to? Well, so now this combined angle for p' is going to be equal to alpha + theta. So this is going to be equal to r cosine and now we say this is alpha + theta and it's going to be equal to the sine of alpha + theta. The coordinates are going to be equal to that.
+
+Alright, so this is the coordinates of p prime, its easier to see in the polar coordinates. In order to get the cartesian coordinates, we now need to use standard trigonometric identities to expand cos of alpha plus theta, and sin of alpha plus theta. So cos of alpha plus theta is, cos alpha, cos theta minus sine alpha, sine theta, okay. And sine alpha plus theta, sine alpha cos theta plus cos alpha sine theta. So let me just do the X coordinate. So if you look at p' and what its X value is.
+
+That will be equal to r cos alpha cos theta minus r sine alpha sine theta.
+
+</p><br><p>The interesting thing about this formula is that we can now look at r cos alpha and r sine alpha terms here.
+
+And you notice that r cos alpha is just equal to the original value of x, while r sine alpha is just equal to the original value of y.
+
+And so this p_x' can be written as x times cosine theta minus y times sine theta.
+
+And, putting all of that together, we see that the value of x' is equal to x times cos theta minus y times sin theta. Doing a similar derivation for y', you see that, that its equal to, y times cos theta plus x times sin theta. And this is the formula for 2D rotations, the matrix that controls 2D rotations.
+</p>
+
+        </div>
+    </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="footerlink">
+    
+    <div style="clear:both;"></div>
+  </div>
+</footer>
+<script type="text/javascript"> Cufon.now(); </script>
+<!-- END PAGE SOURCE -->
+</body>
+</html>
